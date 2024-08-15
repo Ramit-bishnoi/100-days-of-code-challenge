@@ -1,0 +1,36 @@
+int Solution::solve(int A, vector<int> &B) {
+    int sum = 0;
+    for(int i = 0; i < A; i++)
+    {
+        sum = sum + B[i];
+    }
+    if(sum%3 != 0)return 0;
+    
+    int targetSum = sum/3;
+    
+    vector<int>temp(A,0);
+    int tempSum = 0;
+    for(int i = A-1 ; i >= 0; i--)
+    {
+        tempSum = tempSum + B[i];
+        if(tempSum == targetSum)temp[i]=1;
+    }
+    
+    tempSum = 0;
+    int count = 0;
+    for(int i = 0; i < A; i++)
+    {
+        tempSum = tempSum + B[i];
+        if(tempSum == targetSum)
+        {
+            for(int j = i+2; j<A; j++)
+            {
+                if(temp[j]==1)
+                {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+}
