@@ -1,0 +1,26 @@
+int Solution::perfectPeak(vector<int> &A) {
+
+    int n = A.size();
+    set<int> left;
+    int i ;
+    left.insert(A[0]);
+ 
+    map<int, int> right;
+    for (i = 1; i <= n - 1; i++) {
+        ++right[A[i]];
+    }
+    for (i = 1; i <= n - 2; i++) {
+        --right[A[i]];
+        if (right[A[i]] == 0)
+            right.erase(A[i]);
+        //MaxValue
+        int leftMax = *left.rbegin();
+        //MinValue
+        int rightMin = (right.begin())->first;
+        if (leftMax < A[i] && A[i] < rightMin)
+            return true;
+        left.insert(A[i]);
+    }
+    return false;
+
+}
