@@ -1,0 +1,10 @@
+vector<int> Solution::solve(vector<int> &A) {
+    int n = A.size();
+    vector<int>rep;
+    for(int i = 0;i < n;i++)
+    {
+        rep.push_back(A[i]*A[i]);
+    }
+    sort(rep.begin(),rep.end());
+    return rep;
+}
