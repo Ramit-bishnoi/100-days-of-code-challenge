@@ -1,1 +1,15 @@
+vector<int> Solution::findOccurences(vector<int> &A) {
+    std::map<int, int> occurrence_map;
+    for (int num : A) {
+        occurrence_map[num]++;
+    }
+
+    std::vector<int> result;
+    for (const auto& pair : occurrence_map) {
+        result.push_back(pair.second);
+    }
+    //sort(result.begin(),result.end(),greater<int>());
+
+    return result;
+}
 
