@@ -1,1 +1,47 @@
+//brute force
+void Solution::setZeroes(vector<vector<int> > &A) {
+    int m = A.size();
+    int n = A[0].size();
+    vector<int>rows ;
+    vector<int>column ;
+    
+    for(int i = 0; i < m; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            if(A[i][j] == 0)
+            {
+                rows.push_back(i);
+                column.push_back(j);
+            }
+        }
+    }
+    //for(int i = 0 ; i < rows.size();i++) cout<<rows[i]<<" ";
+    //for(int i = 0 ; i < column.size();i++) cout<<column[i]<<" ";
 
+    for(int i = 0 ; i < rows.size(); i++)
+    {
+        int x = rows[i];
+        for(int j = 0; j < m; j++)
+        {
+            A[x][j]= 0;
+        }
+    }
+    for(int i = 0 ; i < column.size(); i++)
+    {
+        int x = column[i];
+        for(int j = 0; j < n; j++)
+        {
+            
+            A[j][x] = 0;
+        }
+    }
+    //  for(int i = 0; i < m; i++)
+    // {
+    //     for(int j = 0; j < n; j++)
+    //     {
+    //         cout << A[i][j] <<" ";
+    //     }
+    // }
+
+}
