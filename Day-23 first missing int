@@ -1,0 +1,25 @@
+int Solution::firstMissingPositive(vector<int> &A) {
+    int n = A.size() , i =0;
+    sort(A.begin(),A.end());
+    
+    while(A[i] < 1)
+    {
+        i++;
+    }
+    int count = 1 ;
+    for(int j = i; j < n; j++)
+    {
+        if(count == A[j])
+        {
+            count++;
+        }
+        else if(A[j] > count)
+        { 
+            return count;
+        }
+    }
+    
+    return count ;
+    
+}
+    
