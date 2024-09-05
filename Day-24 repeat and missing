@@ -1,0 +1,34 @@
+ int xorOfArray = 0, n = nums.size();
+		for(int i = 0; i < n; i++) {
+			xorOfArray ^= nums[i];
+		}
+		for(int i = 1; i <= n; i++) {
+			xorOfArray ^= i;
+		}
+		int index = (xorOfArray) & ~(xorOfArray - 1);
+		int first = 0, second = 0;
+		for(int i = 0; i < n; i++) {
+			if(((index) & nums[i]) != 0) {
+				first ^= nums[i];
+			}
+			else {
+				second ^= nums[i];
+			}
+			if(((i + 1) & index) != 0) {
+				first ^= i + 1;
+			}
+			else {
+				second ^= i + 1;
+			}
+		}
+		for(int i = 0; i < n; i++) {
+			if(nums[i] == second) {
+				int temp = first;
+				first = second;
+				second = temp;
+				break;
+			}
+		}
+		auto result = {first, second};
+		return result;
+}
