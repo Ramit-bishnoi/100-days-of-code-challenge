@@ -1,0 +1,19 @@
+string Solution::findDigitsInBinary(int A) {
+    int reminder;
+    string res;
+    
+    if(A == 0)
+    {
+        return "0";
+    }
+    else{
+        while(A > 0)
+        {
+            reminder = A % 2 ;
+            res.push_back((char)('0' + reminder));
+            A = A/2;
+        }
+        reverse(res.begin() , res.end());
+        return res;
+    }
+}
