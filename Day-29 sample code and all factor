@@ -1,0 +1,19 @@
+int Solution::solve(int A, int B) {
+    int x = A+B;
+    return x%10000000;
+}
+//all factor
+vector<int> Solution::allFactors(int A) {
+    vector<int> res;
+    int count = 1 ;
+    
+    for(int i = 1 ; i <=A ; i++)
+    {
+        if(A % count == 0 )
+        {
+            res.push_back(i);
+            count++;
+        }
+    }
+    return res;
+}
