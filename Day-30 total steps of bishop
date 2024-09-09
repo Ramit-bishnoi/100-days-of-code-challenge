@@ -1,0 +1,8 @@
+int Solution::solve(int A, int B) {
+    int TL = min(A , B) - 1;
+    int TR = min(A , 9-B) - 1;
+    int BL = 8 - max(A , B);
+    int BR = 8 - max(A , 9-B);
+    
+    return (TL + TR + BL + BR);
+}
