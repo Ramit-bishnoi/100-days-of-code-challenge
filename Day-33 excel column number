@@ -1,0 +1,11 @@
+int Solution::titleToNumber(string A) {
+        int ans=0,x,y;
+    for(int i=0;i<A.size();i++){
+        x=A[i]-'A'+1;
+        //cout << x <<" ";
+        y=pow(26,A.size()-1-i);
+        //cout << y <<" ";
+        ans+=x*y;
+    }
+    return ans;
+}
