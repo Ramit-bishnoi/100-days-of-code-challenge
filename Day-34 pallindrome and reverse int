@@ -19,5 +19,19 @@ int Solution::isPalindrome(int C) {
     }
     
 }
+// reverse int 
+int Solution::reverse(int A) {
+    int d ;
+    long long rev = 0;
+    while(A != 0)
+    {
+        d = A % 10;
+        rev = (rev * 10) + d;
+        if(rev>INT_MAX||rev<INT_MIN) return 0;
+        A = A / 10;
+    }
+    return rev ;
+}
+
 
 
