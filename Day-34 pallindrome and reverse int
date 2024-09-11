@@ -1,0 +1,23 @@
+int Solution::isPalindrome(int C) {
+    int B;
+    int rev =0;
+    int A = C;
+    while(A !=0 )
+    {
+        B = A%10;
+        rev = (rev*10)+B;
+        A = A/10;
+    }
+    
+    if(C == rev && C >= 0) 
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+    
+}
+
+
