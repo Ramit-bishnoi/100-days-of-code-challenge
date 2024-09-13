@@ -1,0 +1,12 @@
+int Solution::gcd(int A, int B) {
+    int C = max(A,B);
+    int D = min(A,B);
+    
+    while(D != 0)
+    {
+        int temp = D;
+        D = C % D;
+        C = temp;
+    }
+    return C;
+}
