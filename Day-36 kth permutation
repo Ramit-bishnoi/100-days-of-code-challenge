@@ -1,0 +1,19 @@
+vector<int> Solution::findPerm(int A, long B) {
+    vector<long> fac(20,1);B--;
+    for(int i=2;i<20;i++) fac[i]=fac[i-1]*i;
+    int p=0;while(p<20 && fac[p]<=B) p++;
+    p--;
+    // cout<<p<<endl;
+    vector<int> ans;
+    for(int i=1;i<A-p;i++) ans.push_back(i);
+    vector<int> rem;
+    for(int i=A-p;i<=A;i++) rem.push_back(i);
+    while(p>=0){
+        int it = B/fac[p];
+        ans.push_back(rem[it]);
+        rem.erase(rem.begin()+it);
+        B=B%fac[p];p--;
+    }
+    return ans;
+}
+
