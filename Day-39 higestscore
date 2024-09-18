@@ -1,0 +1,27 @@
+int Solution::highestScore(vector<vector<string>> &A) {
+    unordered_map<string, pair<int, int>> studentScores;  // Map to store {name -> {sum of marks, count of marks}}
+
+    int n = A.size();  // Number of rows
+
+    for (int i = 0; i < n; i++) {
+        string name = A[i][0];  // Student's name
+        int marks = stoi(A[i][1]);  // Convert marks to an integer
+
+        // Update the sum of marks and count for this student
+        studentScores[name].first += marks;
+        studentScores[name].second += 1;
+    }
+
+    int maxAvg = 0;  // Variable to store the maximum average
+
+    // Iterate over each student's data to calculate their average
+    for (const auto &entry : studentScores) {
+        int totalMarks = entry.second.first;  // Sum of marks
+        int count = entry.second.second;  // Number of marks
+        int average = totalMarks / count;  // Calculate the average
+
+        maxAvg = std::max(maxAvg, average);  // Update the maximum average
+    }
+
+    return maxAvg;  // Return the maximum average
+}
