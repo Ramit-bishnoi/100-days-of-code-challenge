@@ -1,0 +1,10 @@
+int Solution::addNumbers(int A, int B) {
+    while(B != 0)
+    {
+        int carry = (A&B) << 1 ;
+        
+        A = A^B;
+        B = carry;
+    }
+    return A;
+}
