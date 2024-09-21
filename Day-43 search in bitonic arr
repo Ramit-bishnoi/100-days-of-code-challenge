@@ -1,0 +1,52 @@
+int findbig(const vector<int>& A, int low, int high) {
+    while (low < high) {
+        int mid = low + (high - low) / 2;
+        if (A[mid] > A[mid + 1]) {
+            high = mid;
+        } else {
+            low = mid + 1;
+        }
+    }
+    return low;  
+}
+
+int binarySearchIncreasing(const vector<int>& A, int low, int high, int B) {
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (A[mid] == B) {
+            return mid;
+        } else if (A[mid] < B) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int binarySearchDecreasing(const vector<int>& A, int low, int high, int B) {
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (A[mid] == B) {
+            return mid;
+        } else if (A[mid] > B) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+
+int Solution::solve(vector<int>& A, int B) {
+    int n = A.size();
+    
+    int big = findbig(A, 0, n - 1);
+    
+    int idx = binarySearchIncreasing(A, 0, big, B);
+    if (idx != -1) {
+        return idx;
+    }
+    
+    return binarySearchDecreasing(A, big + 1, n - 1, B);
+}
