@@ -1,0 +1,28 @@
+int Solution::solve(vector<int> &A, int B) {
+    int n = A.size();
+    int left = 0, right = 0;
+    
+    for(int i = 0; i < n; i++)
+    {
+        right = right + A[i];
+        left = max(left,A[i]);
+    }
+    
+    while(left < right)
+    {
+        int mid = (left + right)/2;
+        int days = 1, temp = 0;
+        
+        for(int i = 0; i < n && days <= B; temp += A[i++])
+        {
+            
+            if(temp + A[i] > mid){
+                temp = 0;
+                days++;
+            }
+        }
+        if(days > B) left = mid + 1;
+        else right = mid;
+    }
+    return left;
+}
