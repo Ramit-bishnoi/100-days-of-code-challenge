@@ -1,1 +1,38 @@
+bool canBeAlloted(int K, vector<int> &L, int limit){ //limit = mid
+    long long board_length = 0, painter = 1;
+    int n = L.size(); 
+    
+    for(int i=0;i<n;i++){
+        board_length += long(L[i]); 
+        if(board_length > limit){ 
+            board_length = 0; 
+            painter++;
+            i--;
+            if(painter>K){ 
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
+int Solution::paint(int A, int B, vector<int> &C){
+    long long left = 0, right = 0, mid ; 
+    int n=C.size();
+    for(int i=0;i<n;i++){
+        right += long(C[i]);
+        left = max(ans,(1ll)*C[i]);
+    }
+    
+    while(left <= right){
+        mid = (left + right)/2; 
+        
+        if(canBeAlloted(A, C, mid)){
+            right = mid-1;
+        }
+        else{
+            left = mid+1;
+        }
+    }
+    return (left*long(B))%10000003;
+}
