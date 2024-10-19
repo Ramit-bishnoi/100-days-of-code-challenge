@@ -1,0 +1,16 @@
+    vector<int> leaders(vector<int>& arr) {
+        vector<int> res ;
+        int end = arr[arr.size()-1];
+        res.push_back(end);
+        for(int i = arr.size()-2; i >= 0; i--)
+        {
+            if(arr[i] >= end)
+            {
+                res.push_back(arr[i]);
+                end = arr[i];
+            }
+        }
+        reverse(res.begin(), res.end());
+        return res;
+        // Code here
+    }
