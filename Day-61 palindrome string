@@ -1,0 +1,35 @@
+bool alphanumeric(char c)
+{
+    if(c >= 'a' && c <= 'z' || c >= '0' && c <= '9')
+    {
+        return true;
+    }
+    return false;
+}
+
+int Solution::isPalindrome(string A) {
+    transform(A.begin(),A.end(),A.begin(), ::tolower);
+    int n = A.size()-1;
+    int i = 0;
+    while(i < n)
+    {
+        //cout<<A[i] << A[n] <<" ";
+        if(!alphanumeric(A[i]))
+        {
+            i++;
+            continue;
+        }
+        if(!alphanumeric(A[n]))
+        {
+            n--;
+            continue;
+        }
+        if(A[i] != A[n] && abs(A[i]-A[n]) != 32)
+        {
+            return 0;
+        }
+        i++;
+        n--;
+    }
+    return 1;
+}
