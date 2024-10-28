@@ -1,0 +1,22 @@
+string Solution::serialize(vector<string> &A) {
+    //vector<string> sze;
+    //string res = "";
+    ostringstream oss;
+    // for(int i = 0;i < A.size(); i++)
+    // {
+    //     int x = A[i].size();
+    //     sze.push_back(x);
+    // }
+    for(int i = 0;i < A.size();i++)
+    {
+        // res.push_back(A[i]);
+        // res.push_back(to_string(A[i].length());
+        // res.push_back("~");
+        // res = res + A[i];
+        // res = res + to_string(A[i].size());
+        // res = res + ("~");
+        oss << A[i] << A[i].size() << "~";
+    }
+    return oss.str();
+}
+
