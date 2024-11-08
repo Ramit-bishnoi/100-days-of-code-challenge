@@ -1,0 +1,10 @@
+long Solution::countSalutes(string A) {
+    long res = 0;
+    int count = 0;
+    for(auto i : A)
+    {
+        if(i == '>')count++;
+        else res = res + count;
+    }
+    return res;
+}
