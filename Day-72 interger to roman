@@ -1,0 +1,54 @@
+string Solution::intToRoman(int A) {
+    map < int, string> ItoR;
+    string res ="";
+    
+    ItoR[0] = ""; 
+    ItoR[1] = "I", ItoR[2] = "II", ItoR[3] = "III", ItoR[4] = "IV",ItoR[5] = "V"; 
+    ItoR[6] = "VI", ItoR[7] = "VII", ItoR[8] = "VIII", ItoR[9] = "IX",ItoR[10] = "X"; 
+    while(A >= 1000)
+    {
+        res += "M";
+        A -= 1000;
+    }
+    if(A >= 900)
+    {
+        res += "CM";
+        A -= 900;
+    }
+    while(A >= 500)
+    {
+        res += "D";
+        A -= 500;
+    }
+    if(A >= 400)
+    {
+        res += "CD";
+        A -= 400;
+    }
+    while(A >= 100)
+    {
+        res += "C";
+        A -= 100;
+    }
+    if(A >= 90)
+    {
+        res += "XC";
+        A -= 90;
+    }
+    while(A >= 50)
+    {
+        res += "L";
+        A -= 50;
+    }
+    if(A >= 40)
+    {
+        res += "XL";
+        A -= 40;
+    }
+    while(A>10){
+        res += "X"; 
+        A -= 10;
+    }
+    res += ItoR[A];
+    return res;
+}
