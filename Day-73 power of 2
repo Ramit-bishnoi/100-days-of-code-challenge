@@ -1,0 +1,30 @@
+bool isOne(string A){
+    int n = A.size();
+    for(int i=0; i<n-1; i++)
+        if(A[i] != '0') return false;
+    if(A[n-1] == '1') return true;
+    return false;
+}
+
+string divisionByTwo(string &A){
+    int carry = 0;
+    string temp = "";
+    int n = A.size();
+    for(int i=0; i<n; i++){
+        temp.push_back('0' + carry+(A[i] - '0')/2);
+        carry = (A[i] - '0')%2 == 1 ? 5: 0;
+    }
+    return temp;
+}
+int Solution::power(string A) {
+    int n = A.size();
+    int j = 0;
+    while(A[j] == '0') j++ ;
+    if(isOne(A)) return 0;
+    while(! isOne(A))
+    {
+        if((A[n-1] - '0')%2 == 1) return 0;
+        A = divisionByTwo(A);
+    }
+    return 1;
+}
