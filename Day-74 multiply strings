@@ -1,0 +1,32 @@
+string Solution::multiply(string A, string B) {
+    reverse(A.begin(), A.end());
+    reverse(B.begin(), B.end());
+    
+    string res;
+    res.resize(A.size() + B.size(), '0');
+    
+    for(int i = 0; i < A.size(); ++i)
+    {
+        int carry = 0;
+        for(int j = 0; j < B.size() || carry; ++j)
+        {
+            int ans = res[i+j] - '0';
+            int multi = 0;
+            
+            if(j < B.size()) multi = B[j] - '0';
+            
+            ans += (A[i] - '0') * multi + carry;
+            
+            carry = ans/10; 
+            ans %= 10; 
+            res[i+j] = (ans+'0');
+            
+        }
+    }
+    while ((res.size() > 1) && (res[res.size() - 1] == '0'))
+        res.pop_back();
+        
+    reverse(res.begin(), res.end());
+    
+    return res;
+}
