@@ -1,0 +1,28 @@
+string Solution::convert(string A, int B) {
+    if(B >= A.size() || B == 1) return A;
+    int k = 0, flag = 0;
+    vector<string>ans(B);
+    for(int i =0; A[i]; i++)
+    {
+        ans[k] += A[i];
+        
+        if(k == B-1)
+        {
+            k--;
+            flag++;
+        }
+        else if(k == 0)
+        {
+            k++;
+            flag = 0;
+        }
+        else if(flag) k--;
+        else k++;
+    }
+    string res = "";
+    for(int i = 0; i < B; i++)
+    {
+        res += ans[i];
+    }
+    return res;
+}
