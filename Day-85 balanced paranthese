@@ -1,1 +1,59 @@
+int Solution::solve(string A) {
+    stack<char> res;
+    
+    for(int i = 0; i < A.size(); i++)
+    {
+        if(A[i] == '(')
+        {
+            res.push(A[i]);
+        }
+        else if(A[i] == '[')
+        {
+            res.push(A[i]);
+        }
+        else if(A[i] == '{')
+        {
+            res.push(A[i]);
+        }
+        
+        else if(A[i] == ')')
+        {
+            if(!res.empty())
+            {
+                if(res.top() == '(')
+                {
+                    res.pop();
+                }
+                else return 0;
+            }
+            else return 0;
+        }
+        else if(A[i] == ']')
+        {
+            if(!res.empty())
+            {
+                if(res.top() == '[')
+                {
+                    res.pop();
+                }
+                else return 0;
+            }
+            else return 0;
+        }
+        else if(A[i] == '}')
+        {
+            if(!res.empty())
+            {
+                if(res.top() == '{')
+                {
+                    res.pop();
+                }
+                else return 0;
+            }
+            else return 0;
+        }
+    }
+    if(res.empty()) return 1;
+    else return 0;
+}
 
