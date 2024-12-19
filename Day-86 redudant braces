@@ -1,0 +1,21 @@
+int Solution::braces(string A) {
+    stack<char> res;
+    for(char i:A)
+    {
+    
+        if (i == '(' || i == '+' || i == '*' || i == '-' || i == '/')
+            res.push(i);
+        else if(i == ')')
+        {
+            if (res.top() == '(') return 1;
+            else
+            {
+                while (!res.empty() && res.top() != '(')
+                    res.pop();
+                res.pop();
+            }
+            
+        }
+    }
+    return 0;
+}
