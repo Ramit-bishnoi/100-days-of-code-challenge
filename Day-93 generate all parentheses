@@ -1,0 +1,29 @@
+int Solution::isValid(string A) {
+      int n = A.length();
+    char* stack = new char[n];  
+    int top = -1;  
+
+    for (int i = 0; i < n; ++i) {
+        char c = A[i];
+        
+        if (c == '(' || c == '{' || c == '[') {
+            stack[++top] = c;
+        } 
+        
+        else {
+          
+            if (top == -1 || 
+               (c == ')' && stack[top] != '(') || 
+               (c == '}' && stack[top] != '{') || 
+               (c == ']' && stack[top] != '[')) {
+                delete[] stack;  
+                return 0;
+            }
+            --top;  
+        }
+    }
+]
+    int result = (top == -1) ? 1 : 0;
+    delete[] stack;  
+    return result;
+}
