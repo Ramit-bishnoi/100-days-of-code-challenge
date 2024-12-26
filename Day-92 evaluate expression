@@ -1,0 +1,30 @@
+int Solution::evalRPN(vector<string> &A) {
+    stack<int> res;
+    for(int i = 0; i < A.size(); i++){
+        if(A[i] == "+" || A[i] == "-" || A[i] == "*" || A[i] == "/"){
+            int first = res.top();
+            res.pop();
+            int second = res.top();
+            res.pop();
+            if(A[i] == "+"){
+                res.push(second+first);
+            }
+            else if(A[i] == "-"){
+                res.push(second-first);
+            }
+            else if(A[i] == "*"){
+                res.push(second*first);
+            }
+            else{
+                res.push(second/first);
+            }
+        }
+        else{
+            res.push(atoi(A[i].c_str()));
+        }
+    }
+    
+    return res.top();
+       
+
+}
